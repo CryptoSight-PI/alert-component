@@ -13,6 +13,10 @@ export DB_NAME="my_database"
 export DB_USER="root"
 export DB_PASSWORD="sua_senha"
 
+export AWS_ACCESS_KEY_ID=SEU_ACCESS_KEY
+export AWS_SECRET_ACCESS_KEY=SEU_SECRET_KEY
+export AWS_SESSION_TOKEN=SEU_SESSION_TOKEN
+
 3. Salvar e carreagar
 source ~/.bashrc
 
