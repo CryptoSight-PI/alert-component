@@ -1,12 +1,7 @@
 package sight.crypto.config;
 
-
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-
-import javax.sql.DataSource;
-import java.sql.SQLException;
 
 public class DBConnection {
     private final JdbcTemplate jdbcTemplate;
@@ -14,9 +9,15 @@ public class DBConnection {
 
     public DBConnection() {
         BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setUrl("jdbc:mysql:mem:cryptosight");
-        basicDataSource.setUsername("crypto_user");
-        basicDataSource.setPassword("sptech");
+
+        String url = "jdbc:mysql://" +
+                System.getenv("DB_HOST") +
+                ":" + System.getenv("DB_PORT") +
+                "/" + System.getenv("DB_NAME");
+
+        basicDataSource.setUrl(url);
+        basicDataSource.setUsername(System.getenv("DB_NAME"));
+        basicDataSource.setPassword(System.getenv("DB_PASSWORD"));
 
         this.basicDataSource = basicDataSource;
         this.jdbcTemplate = new JdbcTemplate(basicDataSource);

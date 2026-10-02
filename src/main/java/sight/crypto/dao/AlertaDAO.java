@@ -3,12 +3,15 @@ package sight.crypto.dao;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.InvalidResultSetAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import sight.crypto.config.S3Provider;
 import sight.crypto.entity.Alerta;
 
 public class AlertaDAO {
     private JdbcTemplate template;
+    private S3Provider s3Provider;
 
     public Boolean insertAlerta(Alerta alerta) {
+
 //        if (alerta.getDataHoraResolucao() == null) {
 //            alerta.setDataHoraResolucao(new Date(null));
 //        }
@@ -32,5 +35,9 @@ public class AlertaDAO {
         } catch (DataAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String getS3Objects() {
+        return "";
     }
 }
